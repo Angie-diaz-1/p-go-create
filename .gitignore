@@ -1,37 +1,77 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# =====================
+# GO BUILD FILES
+# =====================
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+build/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# =====================
+# GO MODULE FILES
+# =====================
+vendor/
+
+# =====================
+# TEST COVERAGE
+# =====================
+coverage.out
+coverage/
+
+# =====================
+# ENV FILES
+# =====================
+.env
+*.env
+
+# =====================
+# LOGS
+# =====================
+*.log
+
+# =====================
+# SYSTEM FILES
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# IDEs and EDITORS
+# VSCode
+.vscode/
+
+# JetBrains (GoLand, IntelliJ)
+.idea/
 *.iml
 *.ipr
+*.iws
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
-### NetBeans ###
+# Eclipse / STS / Spring Tools
+.classpath
+.project
+.settings/
+.apt_generated
+.sts4-cache
+
+# NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
-.vscode/
+# Gradle wrapper and cache
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+
+# =====================
+# DOCKER
+# =====================
+**/Dockerfile
+**/docker-compose.yml
+.dockerignore
