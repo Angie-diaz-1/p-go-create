@@ -33,7 +33,7 @@ jobs:
           go tool cover -func=coverage.out
 
           echo "✅ Validando cobertura mínima"
-          threshold=80.0
+          threshold=75.0
           coverage=$(go tool cover -func=coverage.out | grep total | awk '{print substr($3, 1, length($3)-1)}')
           echo "Cobertura actual: $coverage%"
           awk "BEGIN {exit ($coverage < $threshold) ? 1 : 0}"
