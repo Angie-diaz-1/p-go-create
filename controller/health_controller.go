@@ -18,8 +18,7 @@ func (uc *HealthController) RegisterRoutes(r *gin.Engine) {
 		health.GET("/", uc.GetHealth)
 	}
 }
+
 func (uc *HealthController) GetHealth(c *gin.Context) {
-
 	c.JSON(http.StatusOK, gin.H{"message": "Hola Docker!"})
-
 }

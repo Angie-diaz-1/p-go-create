@@ -24,7 +24,7 @@ jobs:
           --health-retries=5
 
     steps:
-      - name: 🗕 Checkout repository
+      - name: 🗕️ Checkout repository
         uses: actions/checkout@v4
 
       - name: 🧪 Run unit tests and generate coverage
@@ -38,7 +38,7 @@ jobs:
           echo "Cobertura actual: $coverage%"
           awk "BEGIN {exit ($coverage < $threshold) ? 1 : 0}"
 
-      - name: 🧱 Set up Docker Buildx
+      - name: 🩱 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: 🔐 Login to Docker Hub
@@ -95,7 +95,8 @@ jobs:
           response=$(curl --retry 5 --retry-delay 3 --fail --silent http://localhost:8080/health/)
           echo "Respuesta: $response"
 
-          if [[ "$response" != *"Hola Docker!"* ]]; then
+          if [[ "$response" != *'"message":"Hola Docker!"'* ]]; then
+
             echo "❌ La respuesta no es válida."
             docker stop test-container
             docker rm test-container
