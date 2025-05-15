@@ -20,6 +20,7 @@ func main() {
 	userController := controller.NewUserController(userService)
 
 	userController.RegisterRoutes(r)
-
+	healthController := controller.NewHealthController()
+	healthController.RegisterRoutes(r)
 	r.Run(":8080") // Corre en localhost:8080
 }
