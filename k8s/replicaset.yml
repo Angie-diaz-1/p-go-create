@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-p-go-create
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: p-go-create
+  template:
+    metadata:
+      labels:
+        app: p-go-create
+    spec:
+      containers:
+        - name: contenedor
+          image: nginx
+          ports:
+            - containerPort: 80

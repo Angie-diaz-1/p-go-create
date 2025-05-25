@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p-go-create-deployment
+  namespace: p-go-create
+  labels:
+    app: p-go-create
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: p-go-create
+  template:
+    metadata:
+      labels:
+        app: p-go-create
+    spec:
+      containers:
+        - name: p-go-create-container
+          image: ghcr.io/angie-diaz-1/p-go-create:v1.0.11@sha256:f0c1992bdfa72e911e28b26ccf0e9de493b3d43a30aaff433c28e1c6dbda556f
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_URI
+              value: mongodb://mongo.default.svc.cluster.local:27017
+            - name: MONGO_DB_NAME
+              value: users_db
+            - name: MONGO_COLLECTION_NAME
+              value: users
+          volumeMounts:
+            - name: mongo-data
+              mountPath: /data
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: p-go-create-pvc
+      imagePullSecrets:
+        - name: ghcr-secret
